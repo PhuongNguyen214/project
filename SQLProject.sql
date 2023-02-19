@@ -1,6 +1,4 @@
-﻿--1. [MCI].[DBO].[AVERAGEPRICE] từ bảng [MCI].[DBO].[VALUE_VN30] và [MCI].[DBO].[VOLUME_VN30] với các trường 
---Ticker, OrganShortName, TradingDate, AvegarePrice
---biết AvegarePrice = TotalValue/TotalVolume với các ngày AvegarePrice chưa có dữ liệu 
+﻿--1. Tính AvegarePrice
 
 SELECT *  FROM 
 (
@@ -31,7 +29,7 @@ WHERE TICKER IN (SELECT TICKER FROM
 					WHERE XEP_HANG = 1)
 GROUP BY TICKER
 
---3.	CHỌN RA DANH SÁCH CÁC NGÀY BỊ LỖI DỮ LIỆU KHI (HIGHESTPRICE NHỎ HƠN LOWESTPRICE)
+--3.	CHỌN RA DANH SÁCH CÁC NGÀY BỊ LỖI DỮ LIỆU
 
 SELECT * FROM [MCI].[DBO].[VALUE_VN30]
   WHERE [HIGHESTPRICE] < [LOWESTPRICE]
